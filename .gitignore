@@ -233,6 +233,8 @@ data/private/
 # Local environment variables and API keys
 .env
 .env.*
+# macOS
+.DS_Store
 
 # Local analysis/output
 output/
