@@ -1,0 +1,220 @@
+{
+  "profile_version": "1.0",
+  "career_objective": "Move into a senior role focused on solving operational and business problems through AI, automation, systems design, and transformation.",
+
+  "target_roles": {
+    "primary": [
+      "AI Transformation",
+      "AI Strategy & Operations",
+      "AI Operations",
+      "AI Enablement",
+      "Business Operations",
+      "Operational Transformation",
+      "Intelligent Automation",
+      "Agentic Workflow Design",
+      "AI Workflow Design",
+      "Staff Program Management",
+      "Principal Program Management"
+    ],
+    "selective": [
+      "Director, AI Programs",
+      "Director, Business Operations",
+      "Director, Operational Transformation",
+      "Director, Strategic Programs",
+      "Chief of Staff",
+      "Technical Program Management"
+    ],
+    "title_matching_rule": "Evaluate responsibilities and scope, not title alone."
+  },
+
+  "seniority": {
+    "target": [
+      "Staff",
+      "Principal",
+      "Lead",
+      "Senior Individual Contributor",
+      "Director"
+    ],
+    "selective": [
+      "Chief of Staff"
+    ],
+    "reject": [
+      "Coordinator",
+      "Associate",
+      "Junior",
+      "Entry Level"
+    ]
+  },
+
+  "work_model": {
+    "remote_required": true,
+    "eligible": [
+      "Fully Remote",
+      "US Remote",
+      "Remote First",
+      "Remote with Occasional Travel",
+      "Remote with Occasional Company Offsites"
+    ],
+    "reject": [
+      "Hybrid",
+      "Office Based",
+      "Recurring Office Attendance",
+      "Remote with Required Routine Office Attendance"
+    ],
+    "ambiguous_remote_policy": "Needs Information"
+  },
+
+  "compensation": {
+    "target_total_compensation_usd": 250000,
+    "target_is_hard_floor": false,
+    "rule": "Evaluate total compensation potential including base salary, bonus, and equity when available. Do not reject solely because only base salary is disclosed."
+  },
+
+  "career_direction": {
+    "move_toward": [
+      "AI Transformation",
+      "AI Strategy and Operations",
+      "AI Enablement",
+      "Operational Transformation",
+      "Business Operations",
+      "Systems Design",
+      "Process Automation",
+      "Agentic Workflows",
+      "AI-Assisted Operations"
+    ],
+    "move_away_from": [
+      "Event Management",
+      "Event Production",
+      "Content Marketing",
+      "Tactical Event Operations"
+    ]
+  },
+
+  "capabilities": {
+    "very_strong": [
+      "Program and Portfolio Leadership",
+      "Cross-Functional Leadership"
+    ],
+    "strong": [
+      "Operational Transformation",
+      "Systems Design",
+      "Business Process Design",
+      "Process Automation",
+      "People Leadership",
+      "Analytics and Decision Systems",
+      "Governance and Operating Models",
+      "Organizational Change",
+      "Technology Program Leadership",
+      "Executive Stakeholder Communication",
+      "Vendor and Budget Management"
+    ],
+    "strong_emerging": [
+      "AI-Enabled Workflow Design",
+      "AI-Assisted Automation",
+      "AI Knowledge Systems",
+      "Human-AI Workflow Design",
+      "Agentic Workflow Experimentation"
+    ]
+  },
+
+  "ai_boundaries": {
+    "relevant": [
+      "AI-Assisted Workflow Design",
+      "AI Automation",
+      "AI Enablement",
+      "Knowledge Systems",
+      "Grounded AI Tools",
+      "Human-AI Collaboration",
+      "Agentic Workflows"
+    ],
+    "not_targeting": [
+      "Machine Learning Engineering",
+      "AI Research",
+      "Model Training",
+      "Data Science",
+      "MLOps Engineering"
+    ]
+  },
+
+  "experience_matching": {
+    "require_exact_title_match": false,
+    "evidence_types": [
+      "Direct Evidence",
+      "Transferable Evidence",
+      "Gap"
+    ],
+    "rule": "Evaluate demonstrated capabilities, scope, outcomes, and transferable experience rather than relying primarily on historical job titles or keyword matching."
+  },
+
+  "hard_exclusions": [
+    "Hybrid Required",
+    "Office Required",
+    "Junior Roles",
+    "Pure Event Management",
+    "Pure Content Marketing",
+    "Sales Quota Roles",
+    "Recruiting",
+    "Deep Software Engineering",
+    "Machine Learning Engineering",
+    "Data Science",
+    "Roles Primarily Responsible for Producing Events"
+  ],
+
+  "relationship_policy": {
+    "relationship_affects_job_fit_score": false,
+    "rule": "Search broadly across companies. Known relationships are an independent signal and must never restrict company discovery or artificially increase job fit."
+  },
+
+  "known_relationship_companies": [
+    "Fireworks AI",
+    "Snowflake",
+    "Atlassian",
+    "Bentley Systems"
+  ],
+
+  "market_intelligence_only_companies": [
+    "Amazon"
+  ],
+
+  "scoring": {
+    "career_direction_alignment": 25,
+    "experience_evidence": 25,
+    "scope_and_seniority": 15,
+    "ai_transformation_relevance": 15,
+    "compensation": 10,
+    "company_attractiveness": 5,
+    "practical_fit": 5,
+    "total": 100
+  },
+
+  "additional_signals": {
+    "relationship_score": {
+      "minimum": 0,
+      "maximum": 5
+    },
+    "confidence": [
+      "Low",
+      "Medium",
+      "High"
+    ]
+  },
+
+  "agent_states": [
+    "Strong Match",
+    "Possible Match",
+    "Watch",
+    "Reject",
+    "Needs Information"
+  ],
+
+  "human_review": {
+    "required_before_application": true,
+    "review_decisions": [
+      "Interested",
+      "Maybe",
+      "Reject",
+      "Watch"
+    ],
+    "automatic_application_allowed": false
+  }
+}

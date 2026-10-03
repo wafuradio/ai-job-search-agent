@@ -1,0 +1,46 @@
+{
+  "config_version": "1.0",
+
+  "scoring_scale": {
+    "0": "No known relationship",
+    "1": "Weak or indirect connection",
+    "2": "Second-degree or plausible introduction path",
+    "3": "Known former colleague or professional contact",
+    "4": "Strong professional relationship",
+    "5": "Strong direct referral opportunity"
+  },
+
+  "companies": [
+    {
+      "company": "Fireworks AI",
+      "relationship_score": 3,
+      "contacts": [],
+      "notes": "Known relationship exists. Add contact details later."
+    },
+    {
+      "company": "Snowflake",
+      "relationship_score": 3,
+      "contacts": [],
+      "notes": "Known relationship exists. Add contact details later."
+    },
+    {
+      "company": "Atlassian",
+      "relationship_score": 3,
+      "contacts": [],
+      "notes": "Known relationship exists. Add contact details later."
+    },
+    {
+      "company": "Bentley Systems",
+      "relationship_score": 3,
+      "contacts": [],
+      "notes": "Known relationship exists. Add contact details later."
+    }
+  ],
+
+  "policy": {
+    "affects_job_fit_score": false,
+    "affects_opportunity_brief": true,
+    "relationship_required_for_recommendation": false,
+    "rule": "Relationships provide additional context and potential referral paths but never determine whether a role is a good career fit."
+  }
+}

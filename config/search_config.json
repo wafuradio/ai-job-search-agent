@@ -1,0 +1,120 @@
+{
+  "config_version": "1.0",
+
+  "search_scope": {
+    "country": "United States",
+    "employment_type": "Full-Time",
+    "remote_only": true,
+    "search_broadly_across_companies": true
+  },
+
+  "role_searches": [
+    "AI Transformation",
+    "AI Strategy",
+    "AI Operations",
+    "AI Enablement",
+    "AI Business Operations",
+    "Business Operations",
+    "Operational Transformation",
+    "Intelligent Automation",
+    "AI Automation",
+    "Agentic Workflows",
+    "AI Workflow",
+    "Strategic Programs",
+    "Staff Program Manager",
+    "Principal Program Manager",
+    "Director AI Programs",
+    "Director Business Operations",
+    "Director Operational Transformation",
+    "Chief of Staff"
+  ],
+
+  "concept_searches": [
+    "AI adoption",
+    "enterprise AI transformation",
+    "AI operating model",
+    "AI implementation",
+    "AI workflow transformation",
+    "AI-enabled operations",
+    "business process transformation",
+    "workflow automation",
+    "intelligent automation",
+    "agentic workflow",
+    "AI agents",
+    "operational excellence",
+    "operating model transformation",
+    "business systems",
+    "process redesign"
+  ],
+
+  "preferred_seniority_terms": [
+    "Staff",
+    "Principal",
+    "Lead",
+    "Director",
+    "Senior"
+  ],
+
+  "discovery_sources": {
+    "company_career_sites": true,
+    "greenhouse": true,
+    "lever": true,
+    "ashby": true,
+    "general_web_search": true
+  },
+
+  "priority_company_monitoring": {
+    "enabled": true,
+    "companies": [
+      "Fireworks AI",
+      "Snowflake",
+      "Atlassian",
+      "Bentley Systems"
+    ],
+    "reason": "Known relationship or referral path. These companies receive additional monitoring but no job-fit score advantage."
+  },
+
+  "market_intelligence": {
+    "companies": [
+      "Amazon"
+    ],
+    "surface_as_application_opportunity": false,
+    "use_for": [
+      "Emerging job titles",
+      "Skill trends",
+      "Role design",
+      "Compensation signals"
+    ]
+  },
+
+  "early_rejection_terms": [
+    "On-site",
+    "Onsite",
+    "Hybrid required",
+    "Entry Level",
+    "Coordinator",
+    "Event Manager",
+    "Event Producer",
+    "Account Executive",
+    "Sales Representative",
+    "Recruiter",
+    "Machine Learning Engineer",
+    "Data Scientist"
+  ],
+
+  "ambiguous_conditions": {
+    "remote_status_unclear": "Needs Information",
+    "compensation_missing": "Continue Evaluation",
+    "seniority_unclear": "Continue Evaluation",
+    "unfamiliar_job_title": "Analyze Responsibilities"
+  },
+
+  "discovery_policy": {
+    "title_match_required": false,
+    "concept_match_allowed": true,
+    "discover_unexpected_titles": true,
+    "relationship_required": false,
+    "known_company_required": false,
+    "rule": "Search broadly and evaluate roles based on responsibilities, scope, career direction, and demonstrated experience rather than relying on exact job titles."
+  }
+}
