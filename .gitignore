@@ -218,3 +218,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# -----------------------------
+# Private Job Search Data
+# -----------------------------
+
+# Personal relationship/contact data
+config/relationships_private.json
+
+# Raw job-search data
+data/jobs.db
+data/raw/
+data/private/
+
+# Local environment variables and API keys
+.env
+.env.*
+
+# Local analysis/output
+output/
