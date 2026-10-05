@@ -132,3 +132,40 @@ def test_requirement_evidence_can_classify_transferable_experience():
 
     assert evidence.evidence_type == "Transferable Evidence"
     assert evidence.evidence is not None
+
+
+def test_opportunity_assessment_preserves_human_centered_judgment():
+    """
+    The evaluator should preserve the four human-centered questions that
+    matter when deciding whether an opportunity is worth pursuing.
+    """
+
+    from src.models import OpportunityAssessment
+
+    assessment = OpportunityAssessment(
+        opportunity_quality="Strong",
+        ability_to_do_job="Strong",
+        likely_enjoyment="High",
+        compensation_outlook="Possible",
+        opportunity_reason=(
+            "The role offers meaningful ownership of AI-enabled "
+            "operational transformation."
+        ),
+        ability_reason=(
+            "The candidate has strong direct and transferable evidence "
+            "across systems, automation, and program leadership."
+        ),
+        enjoyment_reason=(
+            "The work emphasizes solving operational problems, building "
+            "systems, and applying AI rather than repetitive coordination."
+        ),
+        compensation_reason=(
+            "The disclosed base salary is below the total compensation "
+            "target, but bonus and equity may close the gap."
+        ),
+    )
+
+    assert assessment.opportunity_quality == "Strong"
+    assert assessment.ability_to_do_job == "Strong"
+    assert assessment.likely_enjoyment == "High"
+    assert assessment.compensation_outlook == "Possible"    

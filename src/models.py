@@ -86,7 +86,7 @@ class RequirementEvidence:
     """
     Connects one job requirement to evidence from the candidate's experience.
 
-    evidence_type must eventually be one of:
+    evidence_type should be one of:
     - Direct Evidence
     - Transferable Evidence
     - Gap
@@ -99,9 +99,40 @@ class RequirementEvidence:
 
 
 @dataclass
+class OpportunityAssessment:
+    """
+    Human-centered assessment of whether the role is worth pursuing.
+
+    These dimensions deliberately sit above the numerical score. The score
+    helps rank large numbers of jobs, but these fields explain whether the
+    opportunity is actually attractive to the candidate.
+    """
+
+    # Strong / Moderate / Weak
+    opportunity_quality: Optional[str] = None
+
+    # Strong / Moderate / Stretch / Poor
+    ability_to_do_job: Optional[str] = None
+
+    # High / Medium / Low / Uncertain
+    likely_enjoyment: Optional[str] = None
+
+    # Strong / Possible / Below Target / Unknown
+    compensation_outlook: Optional[str] = None
+
+    # Short explanations supporting each judgment
+    opportunity_reason: Optional[str] = None
+    ability_reason: Optional[str] = None
+    enjoyment_reason: Optional[str] = None
+    compensation_reason: Optional[str] = None
+
+
+@dataclass
 class ScoreBreakdown:
     """
     V1 100-point job-fit scoring model.
+
+    The numerical score is a ranking aid rather than the final decision.
 
     Relationship strength is deliberately excluded because access to a
     company must not artificially increase the quality of the job match.
@@ -141,6 +172,11 @@ class JobEvaluation:
     # Gatekeeper result
     hard_filter_passed: bool
     hard_filter_reasons: list[str] = field(default_factory=list)
+
+    # Human-centered opportunity assessment
+    opportunity: OpportunityAssessment = field(
+        default_factory=OpportunityAssessment
+    )
 
     # Overall evaluation
     state: Optional[str] = None
