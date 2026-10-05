@@ -121,6 +121,17 @@
       ]
     },
     {
+      "capability": "GitHub and Version Control",
+      "strength": "Working Experience",
+      "evidence": [
+        "Uses GitHub as part of active project-development workflows for the H2E Framework and AI Job Search Agent.",
+        "Works with local Git repositories and GitHub-hosted repositories using a local development, commit, and push workflow.",
+        "Uses version control while developing and maintaining AI-assisted software projects.",
+        "Uses GitHub alongside VS Code and AI-assisted development tools to manage iterative technical work."
+      ],
+      "boundary": "Working technical fluency. Do not represent this as professional software-engineering, DevOps, production infrastructure, or advanced Git administration experience."
+    },
+    {
       "capability": "AI Collaboration and Experimentation",
       "strength": "Strong/Emerging",
       "evidence": [

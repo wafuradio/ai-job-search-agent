@@ -1,12 +1,21 @@
 """
-Tests for the AI evaluator preparation layer.
+Tests for the AI evaluator.
 
-These tests verify that candidate configuration, evidence, normalized job
-data, and evaluator instructions are assembled correctly before any external
-AI model is called.
+These tests verify candidate configuration, evidence, normalized job data,
+evaluator instructions, and the structured-output contract used by the
+AI evaluation layer.
+
+No test in this file makes a live API call.
 """
 
+import pytest
+from pydantic import ValidationError
+
 from src.evaluator import (
+    AIJobEvaluation,
+    OpportunityAssessmentOutput,
+    RequirementEvidenceOutput,
+    ScoreBreakdownOutput,
     build_evaluation_context,
     build_evaluation_instructions,
     build_evaluation_payload,
@@ -53,6 +62,91 @@ def make_job(**overrides):
 
     defaults.update(overrides)
     return Job(**defaults)
+
+
+def make_valid_ai_evaluation():
+    """Return a valid structured AI evaluation for schema tests."""
+
+    return {
+        "role_mission": (
+            "Lead enterprise AI transformation and redesign operational "
+            "workflows across business teams."
+        ),
+        "opportunity": {
+            "opportunity_quality": "Strong",
+            "ability_to_do_job": "Strong",
+            "likely_enjoyment": "High",
+            "compensation_outlook": "Possible",
+            "opportunity_reason": (
+                "The role offers meaningful transformation ownership."
+            ),
+            "ability_reason": (
+                "The candidate has strong direct and transferable evidence."
+            ),
+            "enjoyment_reason": (
+                "The work centers on systems, automation, and transformation."
+            ),
+            "compensation_reason": (
+                "Base salary is strong and bonus and equity are disclosed."
+            ),
+        },
+        "requirement_evidence": [
+            {
+                "requirement": (
+                    "Experience leading enterprise transformation"
+                ),
+                "evidence_type": "Direct Evidence",
+                "evidence": (
+                    "Led operational and systems transformation across "
+                    "MongoDB and Publishers Clearing House."
+                ),
+                "explanation": (
+                    "The candidate has repeatedly redesigned workflows, "
+                    "systems, governance, and operating models."
+                ),
+            },
+            {
+                "requirement": (
+                    "Experience applying AI to business workflows"
+                ),
+                "evidence_type": "Transferable Evidence",
+                "evidence": (
+                    "Built AI-assisted automations and grounded AI tools."
+                ),
+                "explanation": (
+                    "The candidate has practical AI workflow experience "
+                    "without claiming deep ML engineering expertise."
+                ),
+            },
+        ],
+        "strengths": [
+            "Operational transformation",
+            "Cross-functional leadership",
+            "Systems and workflow design",
+        ],
+        "gaps": [
+            "AI transformation experience is newer than the broader "
+            "technology and operations background."
+        ],
+        "questions_to_investigate": [
+            "What is the expected total compensation including equity?",
+        ],
+        "score_breakdown": {
+            "career_direction_alignment": 23,
+            "experience_evidence": 22,
+            "scope_and_seniority": 14,
+            "ai_transformation_relevance": 13,
+            "compensation": 8,
+            "company_attractiveness": 4,
+            "practical_fit": 3,
+        },
+        "state": "Strong Match",
+        "confidence": "High",
+        "recommendation_reason": (
+            "The role strongly aligns with the candidate's direction and "
+            "is supported by substantial direct and transferable evidence."
+        ),
+    }
 
 
 def test_career_profile_loads():
@@ -149,7 +243,10 @@ def test_evaluator_protects_against_ai_title_seduction():
 
     instructions = build_evaluation_instructions()
 
-    assert "Do not reward a role merely because AI appears in the title." in instructions
+    assert (
+        "Do not reward a role merely because AI appears in the title."
+        in instructions
+    )
 
 
 def test_remote_is_preference_not_absolute_rejection():
@@ -161,13 +258,14 @@ def test_remote_is_preference_not_absolute_rejection():
     instructions = build_evaluation_instructions()
 
     assert (
-        "Remote work is strongly preferred, but hybrid work is not automatically"
+        "Remote work is strongly preferred, but hybrid work is not "
+        "automatically"
         in instructions
     )
 
 
 def test_payload_contains_instructions_and_context():
-    """The final pre-AI payload should contain both reasoning rules and data."""
+    """The pre-AI payload should contain reasoning rules and data."""
 
     job = make_job()
 
@@ -176,3 +274,119 @@ def test_payload_contains_instructions_and_context():
     assert "instructions" in payload
     assert "context" in payload
     assert payload["context"]["job"]["company"] == "Example AI Company"
+
+
+def test_requirement_evidence_accepts_valid_classification():
+    """The schema should accept an approved evidence classification."""
+
+    evidence = RequirementEvidenceOutput(
+        requirement="Experience leading enterprise transformation",
+        evidence_type="Transferable Evidence",
+        evidence="Led complex operational transformation programs.",
+        explanation="Adjacent experience provides a credible bridge.",
+    )
+
+    assert evidence.evidence_type == "Transferable Evidence"
+
+
+def test_requirement_evidence_rejects_invalid_classification():
+    """The schema should reject classifications outside our contract."""
+
+    with pytest.raises(ValidationError):
+        RequirementEvidenceOutput(
+            requirement="Experience with AI workflows",
+            evidence_type="Sort Of",
+            evidence="Some relevant experience.",
+        )
+
+
+def test_opportunity_assessment_rejects_invalid_quality():
+    """
+    The model should not be able to invent a new opportunity category.
+    """
+
+    with pytest.raises(ValidationError):
+        OpportunityAssessmentOutput(
+            opportunity_quality="Amazing",
+            ability_to_do_job="Strong",
+            likely_enjoyment="High",
+            compensation_outlook="Possible",
+            opportunity_reason="Strong role.",
+            ability_reason="Strong evidence.",
+            enjoyment_reason="Interesting work.",
+            compensation_reason="Potentially competitive.",
+        )
+
+
+def test_score_breakdown_calculates_total():
+    """
+    Our code should calculate the total score rather than trusting
+    AI arithmetic.
+    """
+
+    score = ScoreBreakdownOutput(
+        career_direction_alignment=23,
+        experience_evidence=22,
+        scope_and_seniority=14,
+        ai_transformation_relevance=13,
+        compensation=8,
+        company_attractiveness=4,
+        practical_fit=3,
+    )
+
+    assert score.total == 87
+
+
+def test_score_breakdown_rejects_score_above_maximum():
+    """The AI should not be able to exceed a category maximum."""
+
+    with pytest.raises(ValidationError):
+        ScoreBreakdownOutput(
+            career_direction_alignment=37,
+            experience_evidence=22,
+            scope_and_seniority=14,
+            ai_transformation_relevance=13,
+            compensation=8,
+            company_attractiveness=4,
+            practical_fit=3,
+        )
+
+
+def test_score_breakdown_rejects_negative_score():
+    """The AI should not be able to return negative category scores."""
+
+    with pytest.raises(ValidationError):
+        ScoreBreakdownOutput(
+            career_direction_alignment=23,
+            experience_evidence=-1,
+            scope_and_seniority=14,
+            ai_transformation_relevance=13,
+            compensation=8,
+            company_attractiveness=4,
+            practical_fit=3,
+        )
+
+
+def test_complete_ai_evaluation_accepts_valid_structure():
+    """
+    A complete evaluation that follows our contract should validate.
+    """
+
+    evaluation = AIJobEvaluation(**make_valid_ai_evaluation())
+
+    assert evaluation.state == "Strong Match"
+    assert evaluation.confidence == "High"
+    assert evaluation.opportunity.ability_to_do_job == "Strong"
+    assert evaluation.score_breakdown.total == 87
+
+
+def test_complete_ai_evaluation_rejects_invalid_state():
+    """
+    The AI should not be able to invent an unsupported recommendation state.
+    """
+
+    data = make_valid_ai_evaluation()
+    data["state"] = "Definitely Apply"
+
+    with pytest.raises(ValidationError):
+        AIJobEvaluation(**data)
