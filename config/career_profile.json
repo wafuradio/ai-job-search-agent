@@ -1,5 +1,5 @@
 {
-  "profile_version": "1.0",
+  "profile_version": "1.1",
   "career_objective": "Move into a senior role focused on solving operational and business problems through AI, automation, systems design, and transformation.",
 
   "target_roles": {
@@ -47,20 +47,23 @@
   },
 
   "work_model": {
-    "remote_required": true,
-    "eligible": [
+    "remote_preferred": true,
+    "remote_is_hard_requirement": false,
+    "preferred": [
       "Fully Remote",
       "US Remote",
       "Remote First",
       "Remote with Occasional Travel",
       "Remote with Occasional Company Offsites"
     ],
-    "reject": [
+    "flag_for_review": [
       "Hybrid",
       "Office Based",
       "Recurring Office Attendance",
-      "Remote with Required Routine Office Attendance"
+      "Remote with Required Routine Office Attendance",
+      "Onsite"
     ],
+    "rule": "Remote work is strongly preferred. Hybrid or onsite requirements should reduce practical fit and be surfaced prominently for human review, but should not automatically reject an otherwise exceptional opportunity.",
     "ambiguous_remote_policy": "Needs Information"
   },
 
@@ -147,8 +150,6 @@
   },
 
   "hard_exclusions": [
-    "Hybrid Required",
-    "Office Required",
     "Junior Roles",
     "Pure Event Management",
     "Pure Content Marketing",

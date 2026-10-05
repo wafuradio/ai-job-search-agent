@@ -1,0 +1,288 @@
+{
+  "candidate": {
+    "career_positioning": "AI Transformation | Business Operations | Systems & Automation | Principal Program Leadership",
+    "career_thesis": "An experienced technology, program, and operations leader who identifies operational problems, redesigns workflows and systems, and increasingly uses AI and automation to create scalable solutions.",
+    "important_boundary": "Do not portray the candidate as having spent many years leading enterprise AI transformation. Her strongest foundation is in technology, operations, systems, program leadership, and transformation, with newer hands-on evidence applying AI to operational problems."
+  },
+
+  "evaluation_principles": {
+    "exact_title_not_required": true,
+    "transferable_experience_counts": true,
+    "do_not_invent_experience": true,
+    "do_not_inflate_ai_experience": true,
+    "distinguish_learnable_gap_from_disqualifying_gap": true,
+    "evaluate_actual_work_not_title": true,
+    "primary_question": "Can the candidate credibly accomplish what this company is hiring this person to accomplish?"
+  },
+
+  "experience_evidence": [
+    {
+      "capability": "Operational Transformation",
+      "strength": "Strong",
+      "evidence": [
+        "Modernized MongoDB program operations by moving planning and execution from spreadsheets into structured project-management workflows.",
+        "Led program continuity through significant organizational and operating-model change, redefining workflows, responsibilities, and systems as team scope and structure evolved.",
+        "Developed and standardized PMO methods, governance, templates, and executive reporting across a portfolio of more than 40 concurrent projects at Publishers Clearing House."
+      ]
+    },
+    {
+      "capability": "Systems Design",
+      "strength": "Strong",
+      "evidence": [
+        "Designed and built MongoDB's Jira-based session management system from the ground up.",
+        "Replaced spreadsheet tracking with a structured system linking source sessions, derivative versions, presentation assets, content owners, speakers, deliverables, and event history.",
+        "Implemented and managed a digital asset management system supporting global programs."
+      ]
+    },
+    {
+      "capability": "AI-Enabled Workflow Design",
+      "strength": "Strong/Emerging",
+      "evidence": [
+        "Designed and built AI-assisted automations for speaker invitations, agreements, presentation collection, and sponsorship workflows.",
+        "These workflows eliminated more than 15 hours of manual work per week across global event operations.",
+        "Built and maintains an AI-assisted MongoDB product knowledge base that consolidates fragmented product information.",
+        "Created a custom Gemini Gem grounded in MongoDB's knowledge base, style guide, and title and abstract standards.",
+        "Designs and manages AI-assisted workflows for the independent H2E Framework project across ideation, production, context management, technical development, and iterative decision-making."
+      ]
+    },
+    {
+      "capability": "Business Process Design",
+      "strength": "Strong",
+      "evidence": [
+        "Translated user needs into operational solutions and automated workflows at MongoDB.",
+        "Led the evolution of MongoDB's session-selection operating model from an external CFP to an internally sourced process.",
+        "Established evaluation criteria, governance, and Jira-based workflows for reviewing, scoring, and selecting sessions.",
+        "Introduced iterative planning practices and self-service operational dashboards."
+      ]
+    },
+    {
+      "capability": "Program and Portfolio Leadership",
+      "strength": "Very Strong",
+      "evidence": [
+        "Leads global program operations and systems supporting more than 25 annual events and more than 300 technical SMEs across AMER, EMEA, and APAC.",
+        "Directed complex cross-functional technology programs at Publishers Clearing House.",
+        "Managed PMO operations across a portfolio of more than 40 concurrent projects.",
+        "Managed complex multi-year initiatives, vendor relationships, SOWs, budgets, staffing, and distributed development teams."
+      ]
+    },
+    {
+      "capability": "Cross-Functional Leadership",
+      "strength": "Very Strong",
+      "evidence": [
+        "Partners across Product, Engineering, Marketing, and regional teams at MongoDB.",
+        "Partnered across Technology, Sales, Field Marketing, and Strategic Events in MongoDB Education.",
+        "Led cross-functional technology programs spanning development, infrastructure, analytics, digital marketing, and business operations at Publishers Clearing House."
+      ]
+    },
+    {
+      "capability": "People Leadership",
+      "strength": "Strong",
+      "evidence": [
+        "Led and mentored a team of eight Project Managers and Business Analysts as Associate Director, PMO.",
+        "Has extensive leadership experience coordinating technical SMEs, program stakeholders, distributed teams, and cross-functional contributors."
+      ]
+    },
+    {
+      "capability": "Analytics and Decision Systems",
+      "strength": "Strong",
+      "evidence": [
+        "Built an automated analytics workflow integrating Qualtrics survey results, session attendance data, and Jira metadata.",
+        "Used integrated data to analyze audience behavior and content performance.",
+        "Surfaced mismatches between intended and actual audiences to inform future programming decisions.",
+        "Introduced self-service dashboards for workload, progress, dependencies, and blockers."
+      ]
+    },
+    {
+      "capability": "Governance and Operating Models",
+      "strength": "Strong",
+      "evidence": [
+        "Established evaluation criteria and governance for MongoDB's internally sourced session-selection operating model.",
+        "Developed and standardized PMO methods, governance, templates, and executive reporting across more than 40 concurrent projects.",
+        "Supports governance and nonprofit administration as Treasurer and Secretary of Pine Hill Fire Company No. 1."
+      ]
+    },
+    {
+      "capability": "Organizational Change",
+      "strength": "Strong",
+      "evidence": [
+        "Led program continuity through significant organizational and operating-model change at MongoDB.",
+        "Redefined workflows, responsibilities, and systems as team scope and structure evolved.",
+        "Has repeatedly moved organizations from informal or spreadsheet-based processes into structured operating systems."
+      ]
+    },
+    {
+      "capability": "Technical Fluency",
+      "strength": "Strong for an Operations and Transformation Leader",
+      "evidence": [
+        "Career progression began with hands-on systems administration and evolved into enterprise technology and program leadership.",
+        "Led software, infrastructure, CMS, DAM, and enterprise systems initiatives.",
+        "Works closely with Product and Engineering organizations.",
+        "Builds solutions using Jira, Google Apps Script, Qualtrics, AI tools, knowledge systems, workflow automation, and structured data."
+      ]
+    },
+    {
+      "capability": "AI Collaboration and Experimentation",
+      "strength": "Strong/Emerging",
+      "evidence": [
+        "Uses ChatGPT, Claude and Cowork, Gemini, Glean, and NotebookLM.",
+        "Built an AI-assisted MongoDB product knowledge resource.",
+        "Built a grounded custom Gemini Gem for content development.",
+        "Uses sustained human-AI collaboration in the H2E Framework across creative, technical, and production workflows."
+      ]
+    },
+    {
+      "capability": "Executive and Senior Stakeholder Communication",
+      "strength": "Strong",
+      "evidence": [
+        "Developed executive reporting as part of PMO standardization.",
+        "Works across senior technical, business, product, marketing, and regional stakeholders.",
+        "Translates complex operational and technical requirements into practical programs, workflows, and operating models."
+      ]
+    },
+    {
+      "capability": "Vendor and Budget Management",
+      "strength": "Strong",
+      "evidence": [
+        "Managed vendor relationships, SOWs, budgets, staffing, and delivery across distributed development teams at Publishers Clearing House."
+      ]
+    }
+  ],
+
+  "career_history": [
+    {
+      "organization": "MongoDB",
+      "role": "Staff Program Manager, Strategic Events",
+      "dates": "Jun 2022 - Present",
+      "scope": "Global program operations and systems supporting 25+ annual events and 300+ technical SMEs across AMER, EMEA, and APAC.",
+      "primary_evidence_domains": [
+        "operational transformation",
+        "systems design",
+        "AI-assisted automation",
+        "analytics",
+        "governance",
+        "cross-functional leadership",
+        "organizational change"
+      ]
+    },
+    {
+      "organization": "MongoDB",
+      "role": "Senior Program Manager, Education",
+      "dates": "May 2019 - Jun 2022",
+      "scope": "Global technical education programs and operational modernization.",
+      "primary_evidence_domains": [
+        "program leadership",
+        "workflow modernization",
+        "automation",
+        "dashboards",
+        "digital asset management"
+      ]
+    },
+    {
+      "organization": "Publishers Clearing House",
+      "role": "Associate Director, PMO / Senior Project Manager",
+      "dates": "Dec 2014 - Apr 2019",
+      "scope": "Technology PMO leadership, people management, portfolio governance, and complex technology programs.",
+      "primary_evidence_domains": [
+        "people leadership",
+        "portfolio management",
+        "technology transformation",
+        "governance",
+        "vendor management",
+        "budget management",
+        "executive reporting"
+      ]
+    },
+    {
+      "organization": "Earlier Technology Roles",
+      "role": "Systems Administrator through Senior Project and Program Leadership",
+      "scope": "Software, infrastructure, CMS/DAM, enterprise systems, and distributed technical teams.",
+      "primary_evidence_domains": [
+        "technical fluency",
+        "enterprise systems",
+        "technical program leadership"
+      ]
+    }
+  ],
+
+  "selected_projects": [
+    {
+      "name": "H2E Framework",
+      "type": "Independent AI-Assisted Creative and Systems Project",
+      "evidence": [
+        "Sustained human-AI collaboration across narrative development, web development, audio production, and sound engineering.",
+        "Designs and manages AI-assisted workflows for ideation, production, context and continuity management, technical development, and iterative creative decision-making."
+      ]
+    },
+    {
+      "name": "Pine Hill Fire Company No. 1",
+      "type": "Volunteer Leadership",
+      "evidence": [
+        "Volunteer firefighter and Treasurer and Secretary.",
+        "Supports financial management, governance, grant development, nonprofit administration, and operational modernization."
+      ]
+    }
+  ],
+
+  "likely_enjoyment_signals": {
+    "positive": [
+      "Solving messy operational problems",
+      "Designing systems and workflows",
+      "Using AI and automation to eliminate manual work",
+      "Building something from the ground up",
+      "Creating scalable operating models",
+      "Cross-functional problem solving",
+      "Working across technology and business teams",
+      "Turning ambiguity into structure",
+      "Experimenting with practical AI applications",
+      "Meaningful ownership and autonomy",
+      "Improving how an organization works",
+      "Learning new technologies and applying them to real problems"
+    ],
+    "negative": [
+      "Primarily repetitive administration",
+      "Coordination without meaningful ownership",
+      "Roles dominated by event logistics or event execution",
+      "Jobs where the primary value is scheduling, tracking, or administrative support",
+      "Highly procedural work with little opportunity to improve the underlying system",
+      "Roles that significantly narrow rather than expand strategic or technical scope"
+    ],
+    "uncertainty_rule": "Do not claim the candidate will enjoy a role when the posting provides insufficient evidence about the actual day-to-day work. Return Uncertain instead."
+  },
+
+  "gap_policy": {
+    "principle": "A gap is not automatically disqualifying.",
+    "classifications": [
+      "Direct Evidence",
+      "Transferable Evidence",
+      "Gap"
+    ],
+    "evaluate_gap_by": [
+      "How central the requirement is to the role",
+      "Whether the skill is realistically learnable",
+      "Whether adjacent experience provides a credible bridge",
+      "Whether the employer describes it as required or preferred",
+      "Whether the gap would prevent successful performance from the start"
+    ],
+    "important_ai_boundary": "Do not convert general technology leadership or recent AI-assisted workflow experience into unsupported claims of deep machine learning engineering, model development, data science, or long-term enterprise AI leadership."
+  },
+
+  "compensation_policy": {
+    "target_total_compensation_usd": 250000,
+    "target_is_not_a_hard_floor": true,
+    "evaluate_total_package": true,
+    "consider": [
+      "base salary",
+      "bonus",
+      "equity",
+      "other disclosed compensation"
+    ],
+    "unknown_compensation": "Unknown compensation should trigger investigation, not rejection.",
+    "do_not_infer_undisclosed_compensation": true
+  },
+
+  "education_and_certifications": [
+    "B.S., Information Management & Technology - Long Island University (C.W. Post)",
+    "A.A., Advertising Art & Design - SUNY Farmingdale",
+    "PMP Certified"
+  ]
+}

@@ -1,11 +1,15 @@
 {
-  "config_version": "1.0",
+  "config_version": "1.1",
 
   "search_scope": {
     "country": "United States",
     "employment_type": "Full-Time",
-    "remote_only": true,
-    "search_broadly_across_companies": true
+    "remote_preferred": true,
+    "remote_only": false,
+    "include_hybrid": true,
+    "include_onsite": true,
+    "search_broadly_across_companies": true,
+    "rule": "Prioritize remote opportunities during discovery, but do not exclude hybrid or onsite roles before evaluation."
   },
 
   "role_searches": [
@@ -88,9 +92,6 @@
   },
 
   "early_rejection_terms": [
-    "On-site",
-    "Onsite",
-    "Hybrid required",
     "Entry Level",
     "Coordinator",
     "Event Manager",
@@ -101,6 +102,15 @@
     "Machine Learning Engineer",
     "Data Scientist"
   ],
+
+  "work_model_handling": {
+    "fully_remote": "Prioritize",
+    "remote_with_occasional_travel": "Prioritize",
+    "hybrid": "Discover and Flag",
+    "onsite": "Discover and Flag",
+    "recurring_office_attendance": "Discover and Flag",
+    "unclear": "Needs Information"
+  },
 
   "ambiguous_conditions": {
     "remote_status_unclear": "Needs Information",
@@ -115,6 +125,7 @@
     "discover_unexpected_titles": true,
     "relationship_required": false,
     "known_company_required": false,
-    "rule": "Search broadly and evaluate roles based on responsibilities, scope, career direction, and demonstrated experience rather than relying on exact job titles."
+    "work_model_should_not_prevent_discovery": true,
+    "rule": "Search broadly and evaluate roles based on responsibilities, scope, career direction, demonstrated experience, and overall opportunity quality rather than relying on exact job titles or prematurely excluding roles because of work arrangement."
   }
 }
