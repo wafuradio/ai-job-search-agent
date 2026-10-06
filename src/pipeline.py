@@ -1,13 +1,15 @@
 """
 Core pipeline orchestration for the AI Job Search Agent.
 
-This module connects discovery, Scout filtering, normalization, and
-deterministic Gatekeeper screening without performing AI evaluation.
+This module connects discovery, Scout filtering, normalization,
+fact extraction, and deterministic Gatekeeper screening without
+performing AI evaluation.
 """
 
 from dataclasses import dataclass
 from typing import List
 
+from src.fact_extractor import enrich_job_facts
 from src.gatekeeper import GatekeeperResult, REJECT, evaluate_job
 from src.models import Job
 from src.normalizer import normalize_greenhouse_job
@@ -35,7 +37,11 @@ def screen_greenhouse_jobs(
     Run Greenhouse jobs through the deterministic V1 screening pipeline.
 
     Flow:
-        geography -> Scout relevance -> normalization -> Gatekeeper
+        geography
+        -> Scout relevance
+        -> normalization
+        -> fact extraction
+        -> Gatekeeper
 
     Only Gatekeeper REJECT results are removed.
     PASS, FLAG, and NEEDS_INFORMATION continue.
@@ -62,6 +68,8 @@ def screen_greenhouse_jobs(
             company=company,
             country=country,
         )
+
+        enrich_job_facts(normalized_job)
 
         gatekeeper_result = evaluate_job(normalized_job)
 
