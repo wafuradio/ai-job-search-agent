@@ -141,6 +141,18 @@
     "executive assistant"
   ],
 
+  "excluded_title_terms": [
+    "Account Executive",
+    "Counsel",
+    "Legal Specialist",
+    "Recruiter",
+    "Research Economist",
+    "Political Research",
+    "Compliance",
+    "SOX"
+  ],
+
+
   "target_levels": [
     "Staff",
     "Principal",

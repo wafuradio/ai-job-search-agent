@@ -123,3 +123,198 @@ def test_role_family_without_titles_raises_error(tmp_path):
 
     with pytest.raises(ValueError):
         load_scout_config(config_path)
+
+def test_relevance_finds_exact_role_title():
+    from src.scout import score_job_relevance
+
+    config = load_scout_config()
+
+    result = score_job_relevance(
+        title="AI Transformation Lead",
+        description="Lead enterprise transformation.",
+        config=config,
+    )
+
+    assert result.relevant is True
+    assert result.score >= 3
+    assert "AI Transformation" in result.matched_role_terms
+
+
+def test_relevance_finds_adjacent_role_from_description():
+    from src.scout import score_job_relevance
+
+    config = load_scout_config()
+
+    result = score_job_relevance(
+        title="Principal Strategic Initiatives Manager",
+        description=(
+            "Lead operating models, governance, AI adoption, "
+            "cross-functional leadership, and strategic initiatives."
+        ),
+        config=config,
+    )
+
+    assert result.relevant is True
+    assert result.score >= 2
+    assert len(result.matched_positive_signals) >= 2
+
+
+def test_irrelevant_role_does_not_pass():
+    from src.scout import score_job_relevance
+
+    config = load_scout_config()
+
+    result = score_job_relevance(
+        title="Accounts Payable Clerk",
+        description=(
+            "Process invoices, reconcile payments, and maintain "
+            "vendor records."
+        ),
+        config=config,
+    )
+
+    assert result.relevant is False
+    assert result.score < 2
+
+
+def test_caution_signal_reduces_score():
+    from src.scout import score_job_relevance
+
+    config = load_scout_config()
+
+    clean = score_job_relevance(
+        title="AI Operations Lead",
+        description=(
+            "Lead AI adoption, workflow automation, governance, "
+            "and cross-functional leadership."
+        ),
+        config=config,
+    )
+
+    cautioned = score_job_relevance(
+        title="AI Operations Lead",
+        description=(
+            "Lead AI adoption, workflow automation, governance, "
+            "and cross-functional leadership. "
+            "This role requires deep machine learning engineering."
+        ),
+        config=config,
+    )
+
+    assert cautioned.score < clean.score
+
+
+def test_caution_signal_does_not_automatically_reject():
+    from src.scout import score_job_relevance
+
+    config = load_scout_config()
+
+    result = score_job_relevance(
+        title="Director AI Transformation",
+        description=(
+            "Lead AI transformation, AI adoption, governance, "
+            "operating models, and cross-functional leadership. "
+            "Some deep machine learning engineering collaboration "
+            "is involved."
+        ),
+        config=config,
+    )
+
+    assert result.relevant is True
+    assert "deep machine learning engineering" in (
+        result.matched_caution_signals
+    )       
+
+
+def test_us_job_recognizes_state_location():
+    from src.scout import is_us_job
+
+    assert is_us_job("San Francisco, CA") is True
+    assert is_us_job("New York City, NY") is True
+
+
+def test_us_job_recognizes_multiple_us_locations():
+    from src.scout import is_us_job
+
+    location = (
+        "San Francisco, CA | New York City, NY | Seattle, WA"
+    )
+
+    assert is_us_job(location) is True
+
+
+def test_us_job_recognizes_remote_united_states():
+    from src.scout import is_us_job
+
+    location = (
+        "London, UK; Ontario, CAN; "
+        "Remote-Friendly, United States; San Francisco, CA"
+    )
+
+    assert is_us_job(location) is True
+
+
+def test_non_us_job_is_rejected_by_geography():
+    from src.scout import is_us_job
+
+    assert is_us_job("Singapore") is False
+    assert is_us_job("London, UK") is False
+    assert is_us_job("Seoul, South Korea") is False
+
+
+def test_missing_location_is_not_assumed_us():
+    from src.scout import is_us_job
+
+    assert is_us_job("") is False   
+    
+
+def test_excluded_profession_does_not_pass():
+    from src.scout import score_job_relevance
+
+    config = load_scout_config()
+
+    result = score_job_relevance(
+        title="Commercial Counsel, GTM",
+        description=(
+            "Lead strategic initiatives, governance, "
+            "and cross-functional leadership."
+        ),
+        config=config,
+    )
+
+    assert result.relevant is False
+    assert result.score == 0
+
+
+def test_account_executive_does_not_pass():
+    from src.scout import score_job_relevance
+
+    config = load_scout_config()
+
+    result = score_job_relevance(
+        title="Growth Account Executive, Startups",
+        description=(
+            "Drive strategic initiatives and "
+            "cross-functional leadership."
+        ),
+        config=config,
+    )
+
+    assert result.relevant is False
+
+
+def test_adjacent_technical_title_is_not_excluded():
+    from src.scout import score_job_relevance
+
+    config = load_scout_config()
+
+    result = score_job_relevance(
+        title="AI Operations Engineer, Partnerships",
+        description=(
+            "Build AI-enabled workflows, improve systems, "
+            "and lead cross-functional initiatives."
+        ),
+        config=config,
+    )
+
+    assert result.relevant is True    
