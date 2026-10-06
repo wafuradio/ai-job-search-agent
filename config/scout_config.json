@@ -1,0 +1,182 @@
+{
+  "version": "1.0",
+  "purpose": "Define job discovery targets for the Scout component of the AI Job Search Agent.",
+
+  "search_strategy": {
+    "country": "United States",
+    "employment_types": [
+      "Full-time"
+    ],
+    "work_arrangements": {
+      "preferred": [
+        "Remote"
+      ],
+      "discover_but_flag": [
+        "Hybrid",
+        "Onsite",
+        "Unknown"
+      ]
+    }
+  },
+
+  "priority_role_families": [
+    {
+      "family": "AI Transformation",
+      "priority": "Highest",
+      "search_titles": [
+        "AI Transformation",
+        "AI Transformation Lead",
+        "AI Transformation Manager",
+        "AI Transformation Director",
+        "AI Transformation Program Manager",
+        "AI Strategy and Operations",
+        "AI Strategy & Operations",
+        "Enterprise AI Transformation",
+        "AI Enablement"
+      ]
+    },
+    {
+      "family": "AI Operations and Enablement",
+      "priority": "Highest",
+      "search_titles": [
+        "AI Operations",
+        "AI Operations Lead",
+        "AI Program Lead",
+        "AI Program Manager",
+        "AI Enablement Lead",
+        "AI Adoption Lead",
+        "AI Implementation Lead",
+        "AI Implementation Manager"
+      ]
+    },
+    {
+      "family": "Operational Transformation",
+      "priority": "High",
+      "search_titles": [
+        "Operational Transformation",
+        "Business Transformation",
+        "Transformation Lead",
+        "Transformation Program Manager",
+        "Digital Transformation",
+        "Intelligent Automation",
+        "Automation Strategy"
+      ]
+    },
+    {
+      "family": "Strategic Operations",
+      "priority": "High",
+      "search_titles": [
+        "Strategic Projects Lead",
+        "Strategic Operations",
+        "Business Operations Lead",
+        "Principal Business Operations",
+        "Director Business Operations",
+        "Strategy and Operations",
+        "Strategy & Operations"
+      ]
+    },
+    {
+      "family": "Principal and Staff Program Leadership",
+      "priority": "High",
+      "search_titles": [
+        "Principal Program Manager",
+        "Staff Program Manager",
+        "Principal Technical Program Manager",
+        "Staff Technical Program Manager",
+        "Director Program Management"
+      ]
+    },
+    {
+      "family": "Chief of Staff",
+      "priority": "Selective",
+      "search_titles": [
+        "Chief of Staff",
+        "Technical Chief of Staff",
+        "Chief of Staff Technology",
+        "Chief of Staff AI"
+      ]
+    }
+  ],
+
+  "positive_signals": [
+    "AI transformation",
+    "AI adoption",
+    "AI enablement",
+    "operating models",
+    "operational transformation",
+    "business transformation",
+    "workflow automation",
+    "intelligent automation",
+    "technology adoption",
+    "organizational change",
+    "systems improvement",
+    "process improvement",
+    "cross-functional leadership",
+    "Product and Engineering partnership",
+    "governance",
+    "program strategy",
+    "portfolio leadership",
+    "executive stakeholders",
+    "ambiguous problems",
+    "build from scratch",
+    "scalable processes",
+    "strategic initiatives",
+    "measurement frameworks",
+    "AI-enabled workflows"
+  ],
+
+  "caution_signals": [
+    "deep machine learning engineering",
+    "model training",
+    "ML research",
+    "production ML engineering",
+    "deep Salesforce administration",
+    "Salesforce architect",
+    "HubSpot administrator",
+    "quota carrying",
+    "sales development",
+    "primarily event execution",
+    "event logistics",
+    "calendar management",
+    "executive assistant"
+  ],
+
+  "target_levels": [
+    "Staff",
+    "Principal",
+    "Lead",
+    "Senior Lead",
+    "Senior Manager",
+    "Director"
+  ],
+
+  "compensation": {
+    "target_total_compensation": 250000,
+    "below_target_is_automatic_reject": false,
+    "unknown_compensation_is_automatic_reject": false
+  },
+
+  "discovery_sources": [
+    "Company career sites",
+    "Ashby",
+    "Greenhouse",
+    "Lever",
+    "Web job discovery"
+  ],
+
+  "relationship_companies": [
+    "Fireworks AI",
+    "Snowflake",
+    "Atlassian",
+    "Bentley Systems"
+  ],
+
+  "rules": {
+    "relationship_company_required": false,
+    "ai_in_title_required": false,
+    "remote_required": false,
+    "exact_title_match_required": false,
+    "discover_adjacent_roles": true,
+    "prioritize_work_over_title": true
+  }
+}
