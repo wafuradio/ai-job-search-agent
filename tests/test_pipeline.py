@@ -119,9 +119,15 @@ def test_pipeline_preserves_scout_score():
     assert results[0].scout_score >= 3
 
 
-def test_needs_information_continues_pipeline():
+def test_fact_extraction_happens_before_gatekeeper():
     jobs = [
-        make_job("AI Transformation Lead"),
+        make_job(
+            title="AI Transformation Lead",
+            description=(
+                "Lead AI transformation and cross-functional leadership. "
+                "This is a fully remote role in the United States."
+            ),
+        ),
     ]
 
     results = screen_greenhouse_jobs(
@@ -130,8 +136,5 @@ def test_needs_information_continues_pipeline():
     )
 
     assert len(results) == 1
-    assert results[0].gatekeeper.status == "Needs Information"
-    assert (
-        "Work arrangement is unknown."
-        in results[0].gatekeeper.reasons
-    )
+    assert results[0].job.remote_status == "Fully Remote"
+    assert results[0].gatekeeper.status == "Pass"
