@@ -5,7 +5,7 @@ Suggestions are proposals for human review, not claims of completed work.
 """
 
 import json
-from typing import Literal
+from typing import Literal, Optional
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -39,7 +39,7 @@ class CareerGap(BaseModel):
     confidence: Literal["High", "Medium", "Low"]
     questions_to_investigate: list[str]
     next_step: str = Field(min_length=1)
-    opportunity: DevelopmentOpportunity | None
+    opportunity: Optional[DevelopmentOpportunity]
 
     @model_validator(mode="after")
     def validate_opportunity(self):
