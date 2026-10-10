@@ -15,18 +15,23 @@ from typing import Optional
 
 @dataclass
 class Compensation:
-    """
-    Compensation information extracted from a job posting.
-
-    All monetary values are annual USD amounts when available.
-    Missing compensation data should remain None rather than being guessed.
-    """
-
+    # Confirmed annual base salary
     base_min: Optional[int] = None
     base_max: Optional[int] = None
+
+    # Range published by the employer, regardless of type
+    published_min: Optional[int] = None
+    published_max: Optional[int] = None
+
+    # "Base Salary", "OTE", "Total Compensation", or "Uncertain"
+    compensation_type: Optional[str] = None
+
+    # Other compensation components
     bonus: Optional[str] = None
     equity: Optional[str] = None
     total_comp_estimate: Optional[int] = None
+
+    # Original posting evidence
     compensation_text: Optional[str] = None
 
 

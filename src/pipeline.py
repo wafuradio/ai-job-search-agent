@@ -9,6 +9,7 @@ performing AI evaluation.
 from dataclasses import dataclass
 from typing import List
 
+from src.compensation_extractor import extract_compensation
 from src.fact_extractor import enrich_job_facts
 from src.gatekeeper import GatekeeperResult, REJECT, evaluate_job
 from src.models import Job
@@ -70,6 +71,9 @@ def screen_greenhouse_jobs(
         )
 
         enrich_job_facts(normalized_job)
+
+        enrich_job_facts(normalized_job)
+        extract_compensation(normalized_job)
 
         gatekeeper_result = evaluate_job(normalized_job)
 
