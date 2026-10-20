@@ -1,7 +1,7 @@
 import json
 from dataclasses import dataclass
-from typing import Any, Dict, List
-from urllib.parse import urlencode
+from typing import Any, Dict, List, Optional
+from urllib.parse import urlencode, quote
 from urllib.request import Request, urlopen
 
 
@@ -17,6 +17,8 @@ class GreenhouseJob:
     location: str
     job_url: str
     description: str
+    first_published: Optional[str] = None
+    updated_at: Optional[str] = None
 
 
 def build_greenhouse_url(
@@ -87,6 +89,8 @@ def parse_greenhouse_jobs(
                 location=location.strip(),
                 job_url=absolute_url.strip(),
                 description=description,
+                first_published=raw_job.get("first_published"),
+                updated_at=raw_job.get("updated_at"),
             )
         )
 
@@ -123,3 +127,16 @@ def fetch_greenhouse_jobs(
         payload=payload,
         board_token=board_token,
     )
+
+def fetch_greenhouse_job_dates(board_token: str, job_id: str, timeout: int = 20) -> dict:
+    """Optional public GET for first publication; list updated_at is not posting age."""
+    if not str(job_id).strip():
+        raise ValueError('Greenhouse job ID cannot be empty')
+    base = build_greenhouse_url(board_token).split('?', 1)[0]
+    request = Request(base + '/' + quote(str(job_id), safe=''), headers={
+        'User-Agent': 'ai-job-search-agent/1.0', 'Accept': 'application/json'})
+    with urlopen(request, timeout=timeout) as response:
+        payload = json.loads(response.read().decode('utf-8'))
+    if not isinstance(payload, dict):
+        raise ValueError('Greenhouse job detail must be an object')
+    return {'first_published': payload.get('first_published'), 'updated_at': payload.get('updated_at')}

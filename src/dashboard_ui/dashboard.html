@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="review-token" content="__REVIEW_TOKEN__">
+<title>Your job review dashboard</title><link rel="stylesheet" href="/app.css"><script src="/app.js" defer></script></head>
+<body><header><div><p class="eyebrow">YOUR NEXT CHAPTER</p><h1>Opportunity review</h1><p id="candidate">Loading your saved jobs…</p></div><button id="refresh">Refresh saved jobs</button></header>
+<main><nav aria-label="Dashboard sections"><button id="tab-jobs" class="primary" aria-pressed="true">Opportunities</button><button id="tab-add" aria-pressed="false">Add a posting</button><button id="tab-sources" aria-pressed="false">Sources & searches</button></nav>
+<p id="error" class="error" role="alert" hidden></p>
+<section id="panel-jobs"><section class="stats" aria-label="Saved job counts" id="stats"></section>
+<p class="notice">Saved opportunities, ready for your review. Refresh reads your local records; it does not discover new jobs or verify that postings remain open. Relevance scores help you explore—they are not a fit assessment.</p>
+<section class="filters" aria-label="Filter opportunities">
+<label>Search<input id="search" type="search" placeholder="Company, role, location…"></label>
+<label>Show<select id="scope"><option value="shortlist">Screening shortlist</option><option value="all">All saved postings</option></select></label>
+<label>Review status<select id="status"><option value="">Any status</option><option>New</option><option>Interested</option><option>Rejected</option><option>Approved to Apply</option></select></label>
+<label>Work model<select id="work"><option value="">Any work model</option><option value="remote">Remote</option><option value="hybrid">Hybrid</option><option value="on-site">On-site</option></select></label>
+<label class="check"><input id="changed" type="checkbox">Needs reevaluation</label></section>
+<div class="results-bar"><p id="count" aria-live="polite"></p><span>Review category → relevance</span></div>
+<section id="jobs" aria-label="Opportunities"></section></section>
+<section id="panel-add" hidden><div class="section-intro"><h2>Bring a posting into your review queue</h2><p>Found something on an employer website, LinkedIn, Indeed, or in a job alert? Copy one posting here. We screen the details you provide; we do not fetch its link or access your accounts.</p></div>
+<form id="posting-form" class="editor"><div class="form-grid">
+<label>Company<input id="add-company" required maxlength="200" autocomplete="organization"></label>
+<label>Job title<input id="add-title" required maxlength="500"></label>
+<label class="wide">Original posting URL<input id="add-url" required type="url" placeholder="https://…" maxlength="3000"></label>
+<label>Copied from<select id="add-origin"><option>Employer site</option><option>LinkedIn</option><option>Indeed</option><option>Email alert</option><option>Other</option></select></label>
+<label>Location / eligible countries<input id="add-location" maxlength="1000" placeholder="Use the posting’s stated location"></label>
+<label>Work model<select id="add-work"><option value="">Unknown</option><option>Remote</option><option>Hybrid</option><option>On-site</option></select></label>
+<label>Employment type<select id="add-employment"><option value="">Unknown</option><option>Full-time</option><option>Part-time</option><option>Contract</option><option>Temporary</option><option>Internship</option></select></label>
+<label class="wide">Compensation as published<input id="add-compensation" maxlength="3000" placeholder="Keep the currency and pay period; leave blank if undisclosed"></label>
+<label class="wide">Full job description<textarea id="add-description" required rows="10" maxlength="250000" placeholder="Paste the full posting. An alert snippet may omit requirements or location restrictions."></textarea></label></div>
+<button type="submit" class="primary" id="preview-posting">Preview screening</button></form>
+<section id="import-preview" class="editor" hidden><h3>Review before saving</h3><div id="import-summary"></div>
+<label class="check"><input id="confirm-import" type="checkbox">I reviewed these copied details. Updating a saved posting may require reevaluation and revoke existing job approval.</label>
+<button id="save-posting" class="primary" disabled>Save to my review queue</button></section><p id="import-message" role="status" aria-live="polite"></p></section>
+<section id="panel-sources" hidden><div class="section-intro"><h2>Your discovery sources</h2><p>Automatic sources run during scheduled discovery. Assisted sources open searches for you to review and import. Each candidate has their own source list.</p></div>
+<form id="employer-form" class="editor"><h3>Add an employer or job board</h3><div class="form-grid"><label>Name<input id="employer-name" required maxlength="200" placeholder="Employer or board name"></label><label>Careers / hosted board URL<input id="employer-url" required type="url" maxlength="3000" placeholder="https://…"></label></div>
+<p class="muted">Greenhouse and Ashby board URLs are recognized automatically. Other public career sites and job boards are added as assisted searches. Adding a source does not fetch postings or confirm that its board is available.</p><button id="save-employer" type="submit" class="primary">Add source</button><p id="employer-message" role="status" aria-live="polite"></p></form>
+<div id="source-list"></div><section class="editor"><h3>LinkedIn & Indeed alerts</h3><p>Use saved searches and email alerts on those sites, then copy a chosen posting into Add a posting. Search links below use this candidate’s roles and location. Your inbox is not connected and alerts are not imported automatically.</p><p><a href="https://www.linkedin.com/help/linkedin/answer/a508396" target="_blank" rel="noopener noreferrer">LinkedIn alert setup ↗</a> · <a href="https://support.indeed.com/hc/en-gb/articles/204488890-Starting-stopping-and-managing-Job-Alerts" target="_blank" rel="noopener noreferrer">Indeed alert setup ↗</a></p></section>
+<h2>Explore beyond your current list</h2><p class="muted">Browser searches are not retrieved jobs or verified matches. Copy selected postings into Add a posting.</p><div id="search-links"></div></section>
+<footer>Decisions and notes stay in this candidate’s local database, with an audit history. Applications remain manual. Future submission requires explicit approval of the job and the exact application materials.</footer></main>
+<dialog id="detail"><div class="dialog-top"><span id="detail-source"></span><button id="close" aria-label="Close job details">Close ✕</button></div>
+<h2 id="detail-title"></h2><p id="detail-company"></p><p id="detail-status"></p><p id="detail-dates"></p>
+<p id="reevaluation" class="notice" hidden>This posting changed materially and needs reevaluation. Any previous approval is no longer active.</p>
+<a id="posting" target="_blank" rel="noopener noreferrer">Open original posting ↗</a>
+<h3>Your review</h3><label>Add a note<textarea id="notes" rows="3" maxlength="10000" placeholder="What interests you? What do you want to check?"></textarea></label>
+<div class="actions"><button id="interested" class="primary">Mark Interested</button><button id="rejected">Mark Rejected</button><button id="reset">Return to New</button><button id="save-note">Save note only</button></div>
+<p class="muted">These actions do not approve or submit an application. Changing an approved job’s status removes its active approval. Saving a note alone preserves its status.</p>
+<p id="save-message" role="status" aria-live="polite"></p>
+<details open><summary>Screening evidence and questions</summary><div id="evidence"></div></details>
+<details><summary>Full job description</summary><pre id="description"></pre></details>
+<details><summary>Review and posting history</summary><ul id="history"></ul></details></dialog></body></html>

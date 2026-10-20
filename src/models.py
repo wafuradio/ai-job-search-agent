@@ -83,6 +83,9 @@ class Job:
 
     # Posting metadata
     posted_date: Optional[str] = None
+    # first_published (Greenhouse), last_published (Ashby), or unknown provenance.
+    posted_date_kind: Optional[str] = None
+    source_updated_at: Optional[str] = None
     application_deadline: Optional[str] = None
 
 

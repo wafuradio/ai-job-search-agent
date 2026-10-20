@@ -33,6 +33,7 @@ def screen_greenhouse_jobs(
     jobs: List[GreenhouseJob],
     company: str,
     country: str = "United States",
+    *, candidate=None,
 ) -> List[ScreenedJob]:
     """
     Run Greenhouse jobs through the deterministic V1 screening pipeline.
@@ -48,7 +49,8 @@ def screen_greenhouse_jobs(
     PASS, FLAG, and NEEDS_INFORMATION continue.
     """
 
-    config = load_scout_config()
+    from src.screening import screen_job
+    config = load_scout_config(candidate=candidate)
     screened_jobs: List[ScreenedJob] = []
 
     for source_job in jobs:
@@ -71,13 +73,11 @@ def screen_greenhouse_jobs(
         )
 
         enrich_job_facts(normalized_job)
-
-        enrich_job_facts(normalized_job)
         extract_compensation(normalized_job)
 
-        gatekeeper_result = evaluate_job(normalized_job)
+        gatekeeper_result = evaluate_job(normalized_job, candidate=candidate)
 
-        if gatekeeper_result.status == REJECT:
+        if not screen_job(normalized_job, config, candidate=candidate).accepted:
             continue
 
         screened_jobs.append(

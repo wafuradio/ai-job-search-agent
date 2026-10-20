@@ -1,0 +1,36 @@
+{
+  "profile_version": "2.0",
+  "career_objective": "Synthetic program and operations leadership example.",
+  "target_roles": {
+    "primary": [
+      "AI Transformation",
+      "Business Operations"
+    ],
+    "selective": [
+      "Staff Program Manager"
+    ]
+  },
+  "seniority": {
+    "target": [],
+    "reject": []
+  },
+  "work_model": {
+    "remote_preferred": true,
+    "remote_is_hard_requirement": false
+  },
+  "compensation": {
+    "target_total_compensation_usd": 200000,
+    "target_is_hard_floor": false
+  },
+  "career_direction": {
+    "move_toward": [],
+    "move_away_from": []
+  },
+  "hard_exclusions": [],
+  "known_relationship_companies": [],
+  "market_intelligence_only_companies": [],
+  "human_review": {
+    "required_before_application": true,
+    "automatic_application_allowed": false
+  }
+}

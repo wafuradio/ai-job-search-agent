@@ -220,3 +220,46 @@ output/
 
 # Editor backup files
 *.save
+# Each additional candidate's private profile and review data stay local.
+profiles/*/
+data/candidates/
+data/jobs.db-*
+
+# Shared free public discovery feed snapshots (local only).
+data/discovery_cache/
+
+# Local employer source configuration locks.
+profiles/*/*.lock
+
+# All real candidate profiles and workstation settings remain local.
+/profiles/
+/config/app_config.json
+/config/candidate_evidence.json
+/config/career_profile.json
+/config/relationships.json
+/config/scout_config.json
+/config/search_config.json
+/config/career_gap_context.json
+
+# Review data, exports, caches and database copies, wherever created.
+/data/
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.sql
+*.dump
+*.bak
+*.backup
+*.bundle
+/backups/
+/private/
+/local/
+CLAUDE_HANDOFF.md
+*_PRIVATE.md
+*.pem
+*.key
+credentials*.json
+secrets*.json

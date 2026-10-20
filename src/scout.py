@@ -1,11 +1,15 @@
 import json
+import re
+import unicodedata
+from src.normalizer import clean_html
+from src.candidates import get_candidate
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SCOUT_CONFIG = PROJECT_ROOT / "config" / "scout_config.json"
+DEFAULT_SCOUT_CONFIG = get_candidate().directory / "scout_config.json"
 
 
 @dataclass(frozen=True)
@@ -18,10 +22,13 @@ class ScoutQuery:
 
 
 def load_scout_config(
-    config_path: Path = DEFAULT_SCOUT_CONFIG,
+    config_path: Path = None,
+    *, candidate=None,
 ) -> dict:
     """Load and perform basic validation of Scout configuration."""
 
+    selected = get_candidate(candidate)
+    config_path = Path(config_path) if config_path is not None else selected.directory / "scout_config.json"
     with config_path.open("r", encoding="utf-8") as file:
         config = json.load(file)
 
@@ -72,7 +79,8 @@ def load_scout_config(
                 f"Role family '{family['family']}' must have search titles."
             )
 
-    return config
+    from src.search_settings import discovery_scout_config
+    return discovery_scout_config(config, selected)
 
 
 def build_scout_queries(config: dict) -> List[ScoutQuery]:
@@ -105,11 +113,12 @@ def build_scout_queries(config: dict) -> List[ScoutQuery]:
 
 
 def get_scout_queries(
-    config_path: Path = DEFAULT_SCOUT_CONFIG,
+    config_path: Path = None,
+    *, candidate=None,
 ) -> List[ScoutQuery]:
     """Load Scout configuration and return discovery queries."""
 
-    config = load_scout_config(config_path)
+    config = load_scout_config(config_path, candidate=candidate)
     return build_scout_queries(config)
 
 @dataclass(frozen=True)
@@ -121,16 +130,16 @@ class ScoutRelevance:
     matched_caution_signals: List[str]
 
 
+def _match_text(text):
+    text = unicodedata.normalize("NFKC", clean_html(text)).casefold().replace("&", " and ")
+    return " ".join(re.sub(r"[^\w]+", " ", text).split())
+
+
 def _find_matches(text: str, terms: List[str]) -> List[str]:
-    """Return configured terms found in text, case-insensitively."""
+    normalized = " " + _match_text(text) + " "
+    return [term for term in dict.fromkeys(terms)
+            if " " + _match_text(term) + " " in normalized]
 
-    normalized_text = text.lower()
-
-    return [
-        term
-        for term in terms
-        if term.lower() in normalized_text
-    ]
 
 def has_excluded_title(
     title: str,
@@ -146,7 +155,7 @@ def has_excluded_title(
     if not title:
         return False
 
-    normalized_title = title.lower()
+    normalized_title = " " + _match_text(title) + " "
 
     excluded_terms = config.get(
         "excluded_title_terms",
@@ -154,7 +163,7 @@ def has_excluded_title(
     )
 
     return any(
-        term.lower() in normalized_title
+        " " + _match_text(term) + " " in normalized_title
         for term in excluded_terms
     )
 
@@ -210,7 +219,7 @@ def score_job_relevance(
     score = 0
 
     # A relevant title is useful, but not mandatory.
-    score += min(len(matched_role_terms) * 3, 6)
+    score += 3 if matched_role_terms else 0
 
     # Description signals allow adjacent titles to surface.
     score += min(len(matched_positive_signals), 8)
@@ -263,7 +272,7 @@ def is_us_job(location: str) -> bool:
 
     normalized_location = location.lower()
 
-    location_parts = normalized_location.replace(";", "|").split("|")
+    location_parts = re.split(r"[;|]", normalized_location)
 
     for part in location_parts:
         cleaned_part = part.strip()
@@ -274,7 +283,4 @@ def is_us_job(location: str) -> bool:
             if possible_state in US_STATE_ABBREVIATIONS:
                 return True    
 
-    return any(
-        marker in normalized_location
-        for marker in US_LOCATION_MARKERS
-    )
+    return bool(re.search(r"(?<!\w)(?:united states|usa|u\.s\.?|us)(?!\w)", normalized_location))

@@ -91,6 +91,9 @@ def normalize_greenhouse_job(
         location_text=job.location or None,
         country=country,
         raw_description=description or None,
+        posted_date=job.first_published,
+        posted_date_kind='first_published' if job.first_published else None,
+        source_updated_at=job.updated_at,
     )
 
 

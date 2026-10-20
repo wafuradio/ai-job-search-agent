@@ -1,0 +1,194 @@
+{
+  "employment_reject_terms": [
+    "part-time",
+    "part time",
+    "intern",
+    "internship"
+  ],
+  "employment_flag_terms": [
+    "contract",
+    "temporary",
+    "temp"
+  ],
+  "reject_title_groups": [
+    {
+      "terms": [
+        "junior",
+        "entry level",
+        "entry-level",
+        "associate program manager",
+        "program coordinator",
+        "project coordinator",
+        "assistant program manager"
+      ],
+      "reason": "Role appears materially below target seniority."
+    },
+    {
+      "terms": [
+        "event coordinator",
+        "events coordinator",
+        "event manager",
+        "events manager",
+        "event producer",
+        "events producer",
+        "conference manager",
+        "conference producer"
+      ],
+      "reason": "Role appears centered on event execution rather than the target AI, operations, systems, or transformation direction."
+    }
+  ],
+  "exclude_sales_ownership": true,
+  "flag_technical_depth": true,
+  "flag_commercial_context": true,
+  "role_priority": {
+    "enabled": true,
+    "target_title_pattern": "\\b(operations?|business systems|business technology|transformation|enablement|program manager|strategic projects|strategy)\\b",
+    "operational_signals": [
+      {
+        "label": "Workflow and process improvement",
+        "pattern": "\\b(redesign\\w*|improv\\w*|implement\\w*|automat\\w*|streamlin\\w*|scal\\w*|transform\\w*|simplif\\w*)\\b[^.!?]{0,110}\\b(workflows?|process(?:es)?|operations?|business systems|business applications)\\b"
+      },
+      {
+        "label": "Systems and operating-model ownership",
+        "pattern": "\\b(own|lead|define|build|establish|design)\\w*\\b[^.!?]{0,100}\\b(operating model|business systems|process ownership|operational processes|process foundations|systems strategy|application ecosystem|operating rhythm)\\b"
+      },
+      {
+        "label": "Cross-functional program delivery",
+        "pattern": "\\b(lead|own|run|drive|build|coordinate|work)\\w*\\b[^.!?]{0,110}\\b(cross.functional|launches|program.improvement|transformation programs)\\b"
+      },
+      {
+        "label": "Practical automation and adoption",
+        "pattern": "\\b(design|build|implement|evaluate|drive|establish|introduce|deploy|take ownership)\\w*\\b[^.!?]{0,220}\\b(automation|AI tooling|AI tools|AI adoption|agentic workflows|workflow tooling|system adoption)\\b"
+      },
+      {
+        "label": "Operational measurement and accountability",
+        "pattern": "\\b(establish|define|build|track|measure|turn|create)\\w*\\b[^.!?]{0,110}\\b(metrics|scorecards|cycle.time|process ownership|service levels|system of record|capacity plans)\\b"
+      },
+      {
+        "label": "Strategic execution and decision support",
+        "pattern": "\\b(drive|own|track|run|build|lead)\\w*\\b[^.!?]{0,90}\\b(workstreams|strategic initiatives|priority go.to.market initiatives|recommendation|top priorities|operating cadences?|business reviews|business planning)\\b"
+      }
+    ],
+    "specialist_checks": [
+      {
+        "label": "Tax specialization",
+        "title_pattern": "\\b(tax|taxation)\\b",
+        "requirement_patterns": [
+          "\\b(tax experience|indirect taxation|technical knowledge of sales and use tax|tax compliance|tax audits)\\b"
+        ],
+        "question": "Does your verified experience include the posting\u2019s direct tax practice and statutory expertise, rather than only process improvement?"
+      },
+      {
+        "label": "Equity administration specialization",
+        "title_pattern": "\\b(equity|stock plan)\\b",
+        "requirement_patterns": [
+          "\\b(equity administration|stock plan management|certified equity professional|equity compensation principles|ASC 718)\\b"
+        ],
+        "question": "Can you demonstrate direct stock-plan/equity administration expertise and any required credential?"
+      },
+      {
+        "label": "ML research and production-training depth",
+        "requirement_patterns": [
+          "\\b(background in ML engineering|background in ML research|ML training pipelines|RLHF systems|production ML ownership|years of production ML)\\b"
+        ],
+        "question": "Does the posting require prior hands-on ML/research ownership that your evidence supports? Program leadership is not a substitute."
+      },
+      {
+        "label": "Silicon delivery specialization",
+        "title_pattern": "\\b(silicon|hardware)\\b",
+        "requirement_patterns": [
+          "\\b(silicon/SoC program|taped out|shipped chips|chip schedule|ASIC design)\\b"
+        ],
+        "question": "Do you have the explicitly requested chip-delivery or silicon lifecycle experience?"
+      },
+      {
+        "label": "Large-scale infrastructure specialization",
+        "title_pattern": "\\b(infrastructure|cloud inference|compute|data center)\\b",
+        "requirement_patterns": [
+          "\\b(large.scale distributed systems|deep technical understanding of infrastructure|ML infrastructure|GPU/TPU)\\b"
+        ],
+        "question": "Verify direct large-scale infrastructure delivery and engineering depth; general technology leadership alone does not establish it."
+      },
+      {
+        "label": "Specialist accounting expertise",
+        "title_pattern": "\\b(technical accounting|tax|treasury)\\b",
+        "requirement_patterns": [
+          "\\b(CPA|technical accounting|accounting standards|US GAAP|treasury operations)\\b"
+        ],
+        "question": "Does your evidence support the required accounting/treasury practice expertise?"
+      },
+      {
+        "label": "Hands-on software engineering ownership",
+        "title_pattern": "\\b(software engineer|devops|agentops)\\b",
+        "evidence_scope": "role",
+        "requirement_patterns": [
+          "\\b(design|build|develop|own)\\w*\\b[^.!?]{0,60}\\b(backend services|backend systems|production software|software architecture|distributed systems)\\b"
+        ],
+        "question": "Is the primary work designing and operating production software, and does your verified engineering experience support that responsibility?"
+      }
+    ],
+    "investigation_checks": [
+      {
+        "label": "Billing and payments domain",
+        "requirement_patterns": [
+          "\\b(demonstrated success in billing|working knowledge of billing systems|expertise in Order.to.Cash|understanding of usage.based billing|revenue accounting)\\b"
+        ],
+        "question": "Confirm your direct billing/payments or order-to-cash experience and whether transferable operations work is sufficient."
+      },
+      {
+        "label": "Enterprise platform and leadership scope",
+        "requirement_patterns": [
+          "\\b(ownership of large.scale enterprise application portfolios|deep experience with one or more major enterprise platforms|5\\+ years leading teams)\\b"
+        ],
+        "question": "Validate enterprise-platform portfolio ownership, required platform depth, and team-leadership scope against your actual evidence."
+      },
+      {
+        "label": "Vendor/BPO workforce operations",
+        "requirement_patterns": [
+          "\\b(personally run onboarding|operated scaled human review programs|BPO workforces)\\b"
+        ],
+        "question": "Have you directly operated vendor/BPO reviewer onboarding, provisioning, and workforce capacity\u2014not just overseen general programs?"
+      },
+      {
+        "label": "Production automation implementation",
+        "requirement_patterns": [
+          "\\b(scripting the glue|building with LLMs|own them in production|shipping internal AI tools)\\b"
+        ],
+        "question": "Check hands-on scripting, API integration, agent evaluation, and production support expectations against your demonstrated experience.",
+        "demote_to_adjacent": true
+      },
+      {
+        "label": "Recruiting function experience",
+        "title_pattern": "\\brecruiting\\b",
+        "requirement_patterns": [
+          "\\b(part of a talent team|how recruiting operates day to day|technical recruiting|recruiting operations)\\b"
+        ],
+        "question": "Is this recruiting-centered work a direction you want, and can you demonstrate the required talent-team context?",
+        "demote_to_adjacent": true
+      },
+      {
+        "label": "Regulated enterprise readiness",
+        "requirement_patterns": [
+          "\\b(SOC 2|FedRAMP|HIPAA|regulated customers|security reviews)\\b"
+        ],
+        "question": "Verify direct regulated-customer readiness and security/compliance delivery experience; partnering with specialists may differ from owning this work."
+      },
+      {
+        "label": "Direct sales analytics and GTM systems",
+        "title_pattern": "\\b(GTM|sales strategy)\\b",
+        "requirement_patterns": [
+          "\\b(proficiency in SQL or R|deep experience with GTM systems|experience in sales strategy)\\b"
+        ],
+        "question": "Verify direct sales-strategy analytics and GTM platform depth, and whether this commercial focus is work you want.",
+        "demote_to_adjacent": true
+      },
+      {
+        "label": "Engineering/research collaboration depth",
+        "requirement_patterns": [
+          "\\b(deep technical knowledge|deep technical understanding)\\b"
+        ],
+        "question": "Check the actual technical-depth bar against your evidence; coordinating engineers is different from making specialist engineering judgments."
+      }
+    ]
+  }
+}

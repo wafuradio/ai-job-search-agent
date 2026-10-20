@@ -1,0 +1,11 @@
+{
+  "boards": [
+    {
+      "company": "Example Employer",
+      "source": "ashby",
+      "board_token": "example",
+      "enabled": true
+    }
+  ],
+  "career_sites": []
+}

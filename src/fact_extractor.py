@@ -119,9 +119,6 @@ def extract_work_arrangement(job: Job) -> Job:
 
     text = job.raw_description or ""
 
-    if not text:
-        return job
-
     hybrid_evidence = _find_evidence_sentence(
         text,
         HYBRID_PATTERNS,
@@ -148,6 +145,12 @@ def extract_work_arrangement(job: Job) -> Job:
     elif remote_evidence:
         job.remote_status = "Fully Remote"
         job.remote_policy_text = remote_evidence
+
+    elif re.search(r"\bremote\b", job.location_text or "", re.IGNORECASE):
+        # Source location is explicit evidence; it does not imply US eligibility
+        # or override a contrary hybrid/onsite policy in the description.
+        job.remote_status = "Remote"
+        job.remote_policy_text = f"Source location: {job.location_text}"
 
     return job
 

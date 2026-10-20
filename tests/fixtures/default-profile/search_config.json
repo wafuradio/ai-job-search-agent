@@ -1,0 +1,118 @@
+{
+  "config_version": "1.1",
+  "search_scope": {
+    "country": "United States",
+    "employment_type": "Full-Time",
+    "remote_preferred": true,
+    "remote_only": false,
+    "include_hybrid": true,
+    "include_onsite": true,
+    "search_broadly_across_companies": true,
+    "rule": "Prioritize remote opportunities during discovery, but do not exclude hybrid or onsite roles before evaluation."
+  },
+  "role_searches": [
+    "AI Transformation",
+    "AI Strategy",
+    "AI Operations",
+    "AI Enablement",
+    "AI Business Operations",
+    "Business Operations",
+    "Operational Transformation",
+    "Intelligent Automation",
+    "AI Automation",
+    "Agentic Workflows",
+    "AI Workflow",
+    "Strategic Programs",
+    "Staff Program Manager",
+    "Principal Program Manager",
+    "Director AI Programs",
+    "Director Business Operations",
+    "Director Operational Transformation",
+    "Chief of Staff"
+  ],
+  "concept_searches": [
+    "AI adoption",
+    "enterprise AI transformation",
+    "AI operating model",
+    "AI implementation",
+    "AI workflow transformation",
+    "AI-enabled operations",
+    "business process transformation",
+    "workflow automation",
+    "intelligent automation",
+    "agentic workflow",
+    "AI agents",
+    "operational excellence",
+    "operating model transformation",
+    "business systems",
+    "process redesign"
+  ],
+  "preferred_seniority_terms": [
+    "Staff",
+    "Principal",
+    "Lead",
+    "Director",
+    "Senior"
+  ],
+  "discovery_sources": {
+    "company_career_sites": true,
+    "greenhouse": true,
+    "lever": true,
+    "ashby": true,
+    "general_web_search": true
+  },
+  "early_rejection_terms": [
+    "Entry Level",
+    "Coordinator",
+    "Event Manager",
+    "Event Producer",
+    "Account Executive",
+    "Sales Representative",
+    "Recruiter",
+    "Machine Learning Engineer",
+    "Data Scientist"
+  ],
+  "work_model_handling": {
+    "fully_remote": "Prioritize",
+    "remote_with_occasional_travel": "Prioritize",
+    "hybrid": "Discover and Flag",
+    "onsite": "Discover and Flag",
+    "recurring_office_attendance": "Discover and Flag",
+    "unclear": "Needs Information"
+  },
+  "ambiguous_conditions": {
+    "remote_status_unclear": "Needs Information",
+    "compensation_missing": "Continue Evaluation",
+    "seniority_unclear": "Continue Evaluation",
+    "unfamiliar_job_title": "Analyze Responsibilities"
+  },
+  "discovery_policy": {
+    "title_match_required": false,
+    "concept_match_allowed": true,
+    "discover_unexpected_titles": true,
+    "relationship_required": false,
+    "known_company_required": false,
+    "work_model_should_not_prevent_discovery": true,
+    "rule": "Search broadly and evaluate roles based on responsibilities, scope, career direction, demonstrated experience, and overall opportunity quality rather than relying on exact job titles or prematurely excluding roles because of work arrangement."
+  },
+  "public_job_boards": [
+    "remotive",
+    "weworkremotely"
+  ],
+  "discovery_plan": {
+    "terms": [
+      "AI Transformation",
+      "AI Enablement",
+      "Business Operations",
+      "Strategic Programs",
+      "Program Manager",
+      "Chief of Staff"
+    ]
+  },
+  "market_intelligence": {
+    "companies": [
+      "Example Research Only"
+    ],
+    "surface_as_application_opportunity": false
+  }
+}

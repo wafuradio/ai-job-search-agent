@@ -1,0 +1,8 @@
+{
+  "employment_reject_terms": [],
+  "employment_flag_terms": [],
+  "reject_title_groups": [],
+  "exclude_sales_ownership": false,
+  "flag_technical_depth": false,
+  "flag_commercial_context": false
+}

@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "search_strategy": {
+    "country": "United States",
+    "employment_types": [
+      "Full-time"
+    ]
+  },
+  "priority_role_families": [],
+  "target_levels": [],
+  "positive_signals": [],
+  "caution_signals": [],
+  "excluded_title_terms": [],
+  "additional_role_terms": [],
+  "additional_positive_signals": [],
+  "discovery_sources": [
+    "Greenhouse",
+    "Ashby"
+  ],
+  "rules": {
+    "ai_in_title_required": false,
+    "exact_title_match_required": false
+  }
+}

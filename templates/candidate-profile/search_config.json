@@ -1,0 +1,17 @@
+{
+  "config_version": "2.0",
+  "search_scope": {
+    "country": "United States",
+    "remote_only": false,
+    "include_hybrid": true,
+    "include_onsite": true
+  },
+  "role_searches": [],
+  "concept_searches": [],
+  "early_rejection_terms": [],
+  "discovery_sources": {
+    "greenhouse": true,
+    "ashby": true
+  },
+  "public_job_boards": []
+}

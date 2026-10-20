@@ -1,0 +1,31 @@
+{
+  "profile_version": "2.0",
+  "career_objective": "",
+  "target_roles": {
+    "primary": [],
+    "selective": []
+  },
+  "seniority": {
+    "target": [],
+    "reject": []
+  },
+  "work_model": {
+    "remote_preferred": false,
+    "remote_is_hard_requirement": false
+  },
+  "compensation": {
+    "target_total_compensation_usd": null,
+    "target_is_hard_floor": false
+  },
+  "career_direction": {
+    "move_toward": [],
+    "move_away_from": []
+  },
+  "hard_exclusions": [],
+  "known_relationship_companies": [],
+  "market_intelligence_only_companies": [],
+  "human_review": {
+    "required_before_application": true,
+    "automatic_application_allowed": false
+  }
+}
